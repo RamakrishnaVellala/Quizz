@@ -1,34 +1,37 @@
-{% extends 'home.html' %}
-{% load static %}
+{% extends 'home.html' %} {% load static %} {% block content %}
+<div id="container">
+  <header class="m-5">
+    <a href="{% url 'home' %}" class="btn btn-primary">Go Back</a>
+    <h1>Test Questions</h1>
+  </header>
+  <div class="jumbotron m-5">
+    <section>
+      <div id="results"></div>
+      answers 
+      <form name="quizForm" onsubmit = "return submitAnswers(answers = [{% for q in response %}'{{ q.ans }}',{% endfor %}])" >
+  
+		{% for q in response %}
 
-{% block content %}
-	<div id = "container">
-		<header class='m-5'>
-			<a href="{% url 'home' %}" class = "btn btn-primary">Go Back</a> 
-			<h1>Test Question</h1>
-		</header>
-		<div class="jumbotron m-5">
-			<section>
-				<div id = "results"></div>
+        <h3>{{ q.id }}. {{ q.question }}</h3>
+        <input type="radio" name="q{{ q.id }}" value={{q.choice1 }} id="q1a" /> {{q.choice1 }}<br /><br />
+        <input type="radio" name="q{{ q.id }}" value={{q.choice2 }} id="q1b" /> {{q.choice2 }}<br /><br />
+        <input type="radio" name="q{{ q.id }}" value={{q.choice3 }} id="q1c" /> {{q.choice3 }}<br /><br />
+        <input type="radio" name="q{{ q.id }}" value={{q.choice4 }} id="q1d" /> {{q.choice4 }}<br /><br />
+        <label id="correct" class="rb" style="display: none; color: green"><b>{{q.ans}}</b></label>
+	
+        {% endfor %}
 
-				<form name = "quizForm" onsubmit = "return submitAnswers(answers = [{% for q in response %}'{{ q.answer }}',{% endfor %}])">
-				{% for q in response %}
-								
-					<h3> {{ q.id }}.  {{ q.question }} </h3>
-					<input type = "radio" name = "q{{ q.id }}" value = "a" id = "q1a">   {{ q.choice1 }}<br><br>
-					<input type = "radio" name = "q{{ q.id }}" value = "b" id = "q1b">   {{ q.choice2 }}<br><br>       
-					<input type = "radio" name = "q{{ q.id }}" value = "c" id = "q1c">   {{ q.choice3 }}<br><br>
-					<input type = "radio" name = "q{{ q.id }}" value = "d" id = "q1d">   {{ q.choice4 }}<br><br>
-				{% endfor %}
-	
-					<br><br>
-					<input type = "submit" value = "Submit Answer">
-				</form>
-				<br><br>
-			<a href="/quizz" class="button">Reset</a>
-			</section>
-		  </div>
-      
-	
-	</div>
+        <br /><br />
+        <button
+          type="submit"
+          value="Submit Answer"
+          id="b1">Submit Answer</button>
+      </form>
+      <br /><br />
+      <a href="/quizz" class="button">Reset</a>
+    </section>
+  </div>
+</div>
+
+
 {% endblock %}
