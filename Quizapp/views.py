@@ -28,7 +28,7 @@ def home(request):
 
 
 def quizz(request):
-    response = requests.get('http://127.0.0.1:8000/quiz').json()
+    response = requests.get('http://127.0.0.1:8000/api/quiz').json()
     categories = Category.objects.all()
 
     return render(request, 'quiz.html', {'response': response, 'categories': categories})

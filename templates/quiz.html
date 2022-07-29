@@ -7,7 +7,7 @@
   <div class="jumbotron m-5">
     <section>
       <div id="results"></div>
-      answers 
+ 
       <form name="quizForm" onsubmit = "return submitAnswers(answers = [{% for q in response %}'{{ q.ans }}',{% endfor %}])" >
   
 		{% for q in response %}
@@ -25,6 +25,7 @@
         <button
           type="submit"
           value="Submit Answer"
+		  class='btn btn-primary'
           id="b1">Submit Answer</button>
       </form>
       <br /><br />
