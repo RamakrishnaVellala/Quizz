@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+<div class="row">
+  {% block start %}
+  <div class="container">
+    <div class="jumbotron">
+      {% if user.is_authenticated %}
+      <center><h2>welcome back {{user.username}}!</h2></center>
+      <p class="lead">
+        This is a Quiz application on different technologies. practice the
+        quizzes and get benifited
+      </p>
+      <hr class="my-4" />
+
+      <p>The following categories are availabe for taking quiz</p>
+      {% for category in categories %}
+      <div
+        class="d-flex flex-column justify-content-start align-content-center">
+        <a href="{% url 'quizz' %}" class="btn btn-primary mb-3 w-25" id={{category.id}}
+          >{{category}}</a
+        >
+      </div>
+
+      {% endfor %} {% else %}
+      <center><h1>log in, plz . . .</h1></center>
+      {% endif %}
+    </div>
+    {% endblock %}
+  </div>
+
+  {% endblock %}
+</div>

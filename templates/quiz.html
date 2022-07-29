@@ -1,0 +1,34 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block content %}
+	<div id = "container">
+		<header class='m-5'>
+			<a href="{% url 'home' %}" class = "btn btn-primary">Go Back</a> 
+			<h1>Test Question</h1>
+		</header>
+		<div class="jumbotron m-5">
+			<section>
+				<div id = "results"></div>
+
+				<form name = "quizForm" onsubmit = "return submitAnswers(answers = [{% for q in response %}'{{ q.answer }}',{% endfor %}])">
+				{% for q in response %}
+								
+					<h3> {{ q.id }}.  {{ q.question }} </h3>
+					<input type = "radio" name = "q{{ q.id }}" value = "a" id = "q1a">   {{ q.choice1 }}<br><br>
+					<input type = "radio" name = "q{{ q.id }}" value = "b" id = "q1b">   {{ q.choice2 }}<br><br>       
+					<input type = "radio" name = "q{{ q.id }}" value = "c" id = "q1c">   {{ q.choice3 }}<br><br>
+					<input type = "radio" name = "q{{ q.id }}" value = "d" id = "q1d">   {{ q.choice4 }}<br><br>
+				{% endfor %}
+	
+					<br><br>
+					<input type = "submit" value = "Submit Answer">
+				</form>
+				<br><br>
+			<a href="/quizz" class="button">Reset</a>
+			</section>
+		  </div>
+      
+	
+	</div>
+{% endblock %}
