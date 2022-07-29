@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rji-_b11r9s=j1z3m=hpd!bu0mbl*ro&e*bx=mt$1r#yu+w@if
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quizbyrk.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
