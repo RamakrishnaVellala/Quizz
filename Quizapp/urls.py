@@ -16,7 +16,4 @@ urlpatterns = [
     path('logout/', views.Logout, name='logout'),
     path('addQuestion/', views.addQuestion, name='addQuestion'),
     path('quizz/', views.quizz, name='quizz'),
-
-
-
 ]
