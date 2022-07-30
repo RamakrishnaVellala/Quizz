@@ -79,3 +79,17 @@ def addQuestion(request):
         return render(request, 'addQuestion.html', context)
     else:
         return redirect('home')
+
+
+def addCategory(request):
+    if request.user.is_staff:
+        form = addQuestionform()
+        if(request.method == 'POST'):
+            form = addCategory(request.POST)
+            if(form.is_valid()):
+                form.save()
+                return redirect('/')
+        context = {'form': form}
+        return render(request, 'addCategory.html', context)
+    else:
+        return redirect('home')

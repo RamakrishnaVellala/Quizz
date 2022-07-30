@@ -14,3 +14,9 @@ class addQuestionform(ModelForm):
     class Meta:
         model = QuesForm
         fields = "__all__"
+
+
+class addCategory(ModelForm):
+    class Meta:
+        model = Category
+        fields = "__all__"
